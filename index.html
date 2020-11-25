@@ -143,7 +143,7 @@ function updatePropSymbols(timestamp) {
       var radius = calcPropRadius(props[timestamp]); // circle radius, calculation function defined below
 
       // pop-up information (when mouseover) for each state is also defined here
-      var popupContent = props.name + ' ' + timestamp + ' /2016 cases: ' + String(props[timestamp]) ;
+      var popupContent = props.state_or_t + ' ' + timestamp + ' /2016 cases: ' + String(props[timestamp]) ;
 
       layer.setRadius(radius);  // Leaflet method for setting the radius of a circle
       layer.bindPopup(popupContent, { offset: new L.Point(0,-radius) }); // bind the popup content, with an offset
@@ -153,7 +153,7 @@ function updatePropSymbols(timestamp) {
 // calculate the radius of the proportional symbols based on area
 function calcPropRadius(attributeValue) {
 
-  var scaleFactor = 0.01;   // the scale factor is used to scale the values; the units of the radius are in meters
+  var scaleFactor = 4.;   // the scale factor is used to scale the values; the units of the radius are in meters
                              // you may determine the scale factor accordingly based on the range of the values and the mapping scale
   var area = attributeValue * scaleFactor;
 
@@ -172,7 +172,7 @@ function createSliderUI(timestamps) {
 
     // Define the labels of the time slider as an array of strings
     // Modify this for your data
-    var labels = ["8","9","10","11","12"];
+    var labels = ["August","September","October","November","December"];
 
     $(slider)
         .attr({
@@ -190,7 +190,7 @@ function createSliderUI(timestamps) {
     return slider;
   }
   sliderControl.addTo(map);
-  createTimeLabel("8"); //The starting timestamp label
+  createTimeLabel("August"); //The starting timestamp label
   }
 
 
@@ -218,3 +218,4 @@ function createSliderUI(timestamps) {
             </script>
        </body>
     </html>
+
